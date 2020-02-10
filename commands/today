@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -e
+. "$TODO_WORKDIR/common"
+
+# cli_help_deploy() {
+#   echo "
+# Command: deploy
+# Usage: 
+#   today"
+#   exit 1
+# }
+
+# [ ! -n "$1" ] && cli_help_deploy
+
+TODAY=$(date -I)
+TODAY_FILE="/home/g/todo/$TODAY.txt"
+TODAY_LONG=$(date)
+
+[[ ! -f $TODAY_FILE ]] && echo $TODAY_LONG > $TODAY_FILE && cat "$TODO_WORKDIR/template.txt" >> $TODAY_FILE
+
+$EDITOR "$TODAY_FILE"

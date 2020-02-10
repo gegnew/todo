@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# set -e
+. "$TODO_WORKDIR/common"
+
+cli_help_day() {
+  echo "
+Command: yesterday
+Usage: 
+  yesterday"
+  exit 1
+}
+
+[ -n "$1" ] && cli_help_day
+
+
+DAY='yesterday'
+DAY_FILE="/home/g/todo/$DAY.txt"
+DAY_LONG=$(date -d $DAY)
+
+todo d $DAY
+
+# Example
+# helm upgrade --install \
+#   --wait \
+#   --values $TODO_PROJECTS_PATH/$TODO_PROJECT_NAME/values.yaml \
+#   --namespace $TODO_K8S_NAMESPACE $TODO_PROJECT_NAME $TODO_REPO_PATH

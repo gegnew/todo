@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# set -e
+. "$TODO_WORKDIR/common"
+
+cli_help_day() {
+  echo "
+Command: day
+Usage: 
+  day 2020-02-10"
+  exit 1
+}
+
+[ ! -n "$1" ] && cli_help_day
+
+
+ARG="$1"
+DAY=$(date -d "$ARG" "+%Y-%m-%d")
+DAY_FILE="/home/g/todo/$DAY.txt"
+DAY_LONG=$(date -d "$ARG")
+
+[[ ! -f $DAY_FILE ]] && echo $DAY_LONG > $DAY_FILE && cat "$TODO_WORKDIR/template.txt" >> $DAY_FILE
+
+$EDITOR "$DAY_FILE"

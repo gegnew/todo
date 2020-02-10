@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+set -e
+export TODO_WORKDIR=$(cd $(dirname $0) && pwd)
+. "$TODO_WORKDIR/common"
+
+cli_help() {
+  cli_name=${0##*/}
+  echo "
+Todo CLI
+Version: $(cat $TODO_WORKDIR/VERSION)
+
+Usage: $cli_name [command]
+
+Commands:
+  today (default)    Edit todo for today
+
+  day, d             Select todo for specific day
+                        This effectively extends the functionality of ``date``, such that valid
+                        arguments for ``date`` also work here, i.e:
+                        ``todo d 'tomorrow'`` works like ``date -d 'tomorrow'``
+                        ``todo d 'next Friday'`` works like ``date -d 'next Friday'``
+
+  tomorrow, t        Select tomorrow's todo
+
+  yesterday, y       Select yesterday's todo
+
+  *                  Help
+
+This effectively extends the functionality of ``date``, such that valid
+arguments for ``date`` also work here, i.e:
+  ``todo d 'tomorrow'`` works like ``date -d 'tomorrow'``
+  ``todo d 'next Friday'`` works like ``date -d 'next Friday'``
+
+"
+  exit 1
+}
+
+
+ARG1=${1:-today}
+
+case "$ARG1" in
+    today)
+        "$TODO_WORKDIR/commands/today"
+        ;;
+    day|d)
+        "$TODO_WORKDIR/commands/day" "$2"
+        ;;
+    tomorrow|t)
+        "$TODO_WORKDIR/commands/tomorrow"
+        ;;
+    yesterday|y)
+        "$TODO_WORKDIR/commands/yesterday"
+        ;;
+    *)
+        cli_help
+        ;;
+esac
+
+# case "$1" in
+#   deploy|d)
+#     "$BAGCLI_WORKDIR/commands/deploy" "$2" | tee -ia "$BAGCLI_WORKDIR/deploy_${2}.log"
+#     ;;
+#   *)
+#     cli_help
+#     ;;
+# esac

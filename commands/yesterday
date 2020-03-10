@@ -14,7 +14,7 @@ Usage:
 
 
 DAY='yesterday'
-DAY_FILE="/home/g/todo/$DAY.txt"
+DAY_FILE="$HOME/todo/$DAY.txt"
 DAY_LONG=$($TODO_DATE_FUNC -d $DAY)
 
 todo d $DAY

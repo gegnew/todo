@@ -5,8 +5,6 @@ cli_log() {
   echo "== $script_name $timestamp $1"
 }
 
-export TODO_OS=$(get_os)
-
 get_os() {
     case "$OSTYPE" in
       solaris*) echo "SOLARIS" ;;
@@ -27,4 +25,5 @@ date_func() {
     esac
 }
 
+export TODO_OS=$(get_os)
 export TODO_DATE_FUNC=$(date_func)

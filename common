@@ -4,3 +4,27 @@ cli_log() {
   timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
   echo "== $script_name $timestamp $1"
 }
+
+export TODO_OS=$(get_os)
+
+get_os() {
+    case "$OSTYPE" in
+      solaris*) echo "SOLARIS" ;;
+      darwin*)  echo "OSX" ;; 
+      linux*)   echo "LINUX" ;;
+      bsd*)     echo "BSD" ;;
+      msys*)    echo "WINDOWS" ;;
+      *)        echo "unknown: $OSTYPE" ;;
+    esac
+}
+
+date_func() {
+    case "$TODO_OS" in 
+        LINUX)
+            echo "date" ;;
+        OSX)
+            echo "gdate" ;;
+    esac
+}
+
+export TODO_DATE_FUNC=$(date_func)

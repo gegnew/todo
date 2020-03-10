@@ -14,7 +14,7 @@ set -e
 
 TODAY=$(date -I)
 TODAY_FILE="/home/g/todo/$TODAY.txt"
-TODAY_LONG=$(date)
+TODAY_LONG=$($TODO_DATE_FUNC)
 
 [[ ! -f $TODAY_FILE ]] && echo $TODAY_LONG > $TODAY_FILE && cat "$TODO_WORKDIR/template.txt" >> $TODAY_FILE
 

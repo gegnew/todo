@@ -16,7 +16,7 @@ Usage:
 ARG="$1"
 DAY=$(date -d "$ARG" "+%Y-%m-%d")
 DAY_FILE="/home/g/todo/$DAY.txt"
-DAY_LONG=$(date -d "$ARG")
+DAY_LONG=$($TODO_DATE_FUNC -d "$ARG")
 
 [[ ! -f $DAY_FILE ]] && echo $DAY_LONG > $DAY_FILE && cat "$TODO_WORKDIR/template.txt" >> $DAY_FILE
 

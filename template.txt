@@ -1,5 +1,11 @@
 +===============
-Todo:
+Today:
+[]
+
+Persistent:
+[]
+
+Tomorrow:
 []
 
 Notes:

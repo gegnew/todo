@@ -2,13 +2,19 @@
 Today:
 []
 
-Persistent:
-[]
-
 Tomorrow:
 []
 
-Notes:
+Persistent:
+[]
+
+Practice:
+[] 15 minutes of guitar
+[] call one person
+[] read for 1 hour
+[] Scott's killer core routine
+
+Today I:
 - 
 
 ================

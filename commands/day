@@ -14,7 +14,7 @@ Usage:
 
 
 ARG="$1"
-DAY=$(date -d "$ARG" "+%Y-%m-%d")
+DAY=$($TODO_DATE_FUNC -d "$ARG" "+%Y-%m-%d")
 DAY_FILE="$HOME/todo/$DAY.txt"
 DAY_LONG=$($TODO_DATE_FUNC -d "$ARG")
 
